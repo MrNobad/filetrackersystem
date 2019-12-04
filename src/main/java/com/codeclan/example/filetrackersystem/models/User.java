@@ -1,6 +1,7 @@
 package com.codeclan.example.filetrackersystem.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.tools.javac.comp.Resolve;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,8 +21,7 @@ public class User {
     private String name;
 
     @JsonIgnoreProperties("user")
-    @ManyToOne
-    @JoinColumn(name = "folder_id", nullable = false)
+    @OneToMany(mappedBy = "user")
     private Folder folder;
     private List<Folder> folders;
 

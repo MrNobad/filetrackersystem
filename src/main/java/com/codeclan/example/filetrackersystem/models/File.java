@@ -1,5 +1,7 @@
 package com.codeclan.example.filetrackersystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,6 +25,11 @@ public class File {
 
     @Column(name = "folder")
     private String folder;
+
+    @JsonIgnoreProperties("file")
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
+    private User user;
 
     public File(String name, String extension, String size, String folder) {
         this.name = name;
