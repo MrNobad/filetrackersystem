@@ -1,11 +1,13 @@
 package com.codeclan.example.filetrackersystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "folders")
-public class Folder {
+public class Folders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,16 +18,17 @@ public class Folder {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "files")
-    private ArrayList<File> files;
+@JsonIgnoreProperties("folders")
+    @OneToMany(mappedBy = "folders")
+    private ArrayList<Files> files;
 
-    public Folder(String title) {
+    public Folders(String title) {
         this.title = title;
-        this.files = new ArrayList<>();
+        this.files = new ArrayList<Files>();
 
     }
 
-    public Folder(){
+    public Folders(){
 
     }
 
@@ -37,7 +40,7 @@ public class Folder {
         this.title = title;
     }
 
-    public ArrayList<File> getFiles() {
+    public ArrayList<Files> getFiles() {
         return files;
     }
 
@@ -49,7 +52,7 @@ public class Folder {
         this.id = id;
     }
 
-    public void setFiles(ArrayList<File> files) {
+    public void setFiles(ArrayList<Files> files) {
         this.files = files;
     }
 

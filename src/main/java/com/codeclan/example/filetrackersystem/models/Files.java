@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "files")
-public class File {
+public class Files {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +24,15 @@ public class File {
     @Column(name = "folder")
     private String folder;
 
-    public File(String name, String extension, String size, String folder) {
+    public Files(String name, String extension, String size, String folder) {
         this.name = name;
         this.extension = extension;
         this.size = size;
         this.folder = folder;
+
     }
 
-    public File(){
+    public Files(){
 
     }
 

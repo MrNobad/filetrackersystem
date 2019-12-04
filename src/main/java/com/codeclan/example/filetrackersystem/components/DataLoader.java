@@ -1,8 +1,8 @@
 package com.codeclan.example.filetrackersystem.components;
 
-import com.codeclan.example.filetrackersystem.models.File;
-import com.codeclan.example.filetrackersystem.models.Folder;
-import com.codeclan.example.filetrackersystem.models.User;
+import com.codeclan.example.filetrackersystem.models.Files;
+import com.codeclan.example.filetrackersystem.models.Folders;
+import com.codeclan.example.filetrackersystem.models.Users;
 import com.codeclan.example.filetrackersystem.repositories.FileRepository;
 import com.codeclan.example.filetrackersystem.repositories.FolderRepository;
 import com.codeclan.example.filetrackersystem.repositories.UserRepository;
@@ -25,17 +25,17 @@ import org.springframework.stereotype.Component;
         }
 
         public void run(ApplicationArguments args) {
-            Folder folder2 = new Folder("Quantum Soup");
+            Folders folder2 = new Folders("Quantum Soup");
             folderRepository.save(folder2);
-            Folder folder3 = new Folder("Music");
+            Folders folder3 = new Folders("Music");
             folderRepository.save(folder3);
-            File file2 = new File("Glass Prices", "xml", "1213MB", "Quantum Soup");
+            Files file2 = new Files("Glass Prices", "xml", "1213MB", "Quantum Soup");
             fileRepository.save(file2);
-            File file3 = new File("Daddy Cool", "MP3", "5433MB", "Music")
+            Files file3 = new Files("Daddy Cool", "MP3", "5433MB", "Music")
             fileRepository.save(file3);
-            User user2 = new User("Stevie Nobad");
+            Users user2 = new Users("Stevie Nobad", "");
             userRepository.save(user2);
-            User user3 = new User("Sara Traill");
+            Users user3 = new Users("Sara Traill", folders);
             userRepository.save(user3);
 
 
