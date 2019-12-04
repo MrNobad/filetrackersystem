@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +19,19 @@ public class Users {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties("users")
-    @OneToMany(mappedBy = "users")
-    private ArrayList<Folders> folders;
+    @JsonIgnoreProperties("user")
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
+    private Folder folder;
+    private List<Folder> folders;
 
-    public Users(String name) {
+    public User(String name) {
         this.name = name;
         this.folders = new ArrayList<>();
+    }
+
+    public User(){
+
     }
 
     public String getName() {
@@ -35,12 +42,20 @@ public class Users {
         this.name = name;
     }
 
-    public ArrayList<Folders> getFolder() {
+    public void setFolder(Folder folder) {
+        this.folder = folder;
+    }
+
+    public List<Folder> getFolders() {
         return folders;
     }
 
-    public void setFolder(ArrayList<Folders> folders) {
+    public void setFolders(List<Folder> folders) {
         this.folders = folders;
+    }
+
+    public Folder getFolder() {
+        return folder;
     }
 
     public Long getId() {

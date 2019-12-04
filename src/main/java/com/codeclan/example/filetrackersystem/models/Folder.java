@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "folders")
-public class Folders {
+@Table(name = "folder")
+public class Folder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,17 +19,17 @@ public class Folders {
     @Column(name = "title")
     private String title;
 
-@JsonIgnoreProperties("folders")
+    @JsonIgnoreProperties("folders")
     @OneToMany(mappedBy = "folders")
-    private ArrayList<Files> files;
+    private List<File> files;
 
-    public Folders(String title) {
+    public Folder(String title) {
         this.title = title;
-        this.files = new ArrayList<Files>();
+        this.files = new ArrayList<>();
 
     }
 
-    public Folders(){
+    public Folder(){
 
     }
 
@@ -40,8 +41,12 @@ public class Folders {
         this.title = title;
     }
 
-    public ArrayList<Files> getFiles() {
+    public List<File> getFiles() {
         return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
     }
 
     public Long getId() {
@@ -52,7 +57,7 @@ public class Folders {
         this.id = id;
     }
 
-    public void setFiles(ArrayList<Files> files) {
+    public void setFiles(ArrayList<File> files) {
         this.files = files;
     }
 

@@ -1,7 +1,7 @@
 package com.codeclan.example.filetrackersystem;
-import com.codeclan.example.filetrackersystem.models.Files;
-import com.codeclan.example.filetrackersystem.models.Folders;
-import com.codeclan.example.filetrackersystem.models.Users;
+import com.codeclan.example.filetrackersystem.models.File;
+import com.codeclan.example.filetrackersystem.models.Folder;
+import com.codeclan.example.filetrackersystem.models.User;
 import com.codeclan.example.filetrackersystem.repositories.FileRepository;
 import com.codeclan.example.filetrackersystem.repositories.FolderRepository;
 import com.codeclan.example.filetrackersystem.repositories.UserRepository;
@@ -28,19 +28,19 @@ class FiletrackersystemApplicationTests {
 
 	@Test
 	public void createFile(){
-		Files file1 = new Files("New CV", "docx", "32KB", "Tech CV's");
+		File file1 = new File("New CV", "docx", "32KB", "Tech CV's");
 		fileRepository.save(file1);
 	}
 
 	@Test
 	public void createFolder(){
-		Folders folder1 = new Folders("Tech CV's");
+		Folder folder1 = new Folder("Tech CV's");
 		folderRepository.save(folder1);
 	}
 
 	@Test
 	public void createUser(){
-		Users user1 = new Users("Stephen Nobad", folders);
+		User user1 = new User("Stevie");
 		userRepository.save(user1);
 	}
 }

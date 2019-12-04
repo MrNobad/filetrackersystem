@@ -3,8 +3,8 @@ package com.codeclan.example.filetrackersystem.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "files")
-public class Files {
+@Table(name = "file")
+public class File {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Files {
     @Column(name = "folder")
     private String folder;
 
-    public Files(String name, String extension, String size, String folder) {
+    public File(String name, String extension, String size, String folder) {
         this.name = name;
         this.extension = extension;
         this.size = size;
@@ -32,7 +32,7 @@ public class Files {
 
     }
 
-    public Files(){
+    public File(){
 
     }
 
